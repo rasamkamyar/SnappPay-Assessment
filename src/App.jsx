@@ -1,16 +1,20 @@
-import { useState } from 'react'
+import { useEffect, useState } from "react";
+import Contact from "/src/component/Contact";
 
-import './App.css'
+import "./App.css";
 
 function App() {
+  useEffect(() => {
+    fetch("https://randomuser.me/api/?results=50")
+      .then((res) => res.json())
+      .then((data) => console.log(data.results));
+  });
 
   return (
     <>
-    <h1>hiiii</h1>
-    <h1>hiiii</h1>
-    <h1>hiiii</h1>
+      <Contact />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
