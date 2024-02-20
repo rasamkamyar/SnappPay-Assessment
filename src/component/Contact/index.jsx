@@ -1,17 +1,22 @@
 import style from "./index.module.css";
 
 function Contact(props) {
+  console.log(props);
   return (
     <div className={style.container}>
-      <img src={props.image} alt={props.image} style={{ width: "35%" }} />
+      <img
+        src={props.picture.large}
+        alt={props.picture.large}
+        style={{ width: "35%" }}
+      />
       <h1 style={{ fontSize: "20px" }}>
-        {props.title} {props.first} {props.last}
+        {props.name.title} {props.name.first} {props.name.last}
       </h1>
       <p>
         <span>Phone Number : {props.phone} </span>{" "}
       </p>
       <p>
-        <span>City : {props.city} </span>
+        <span>City : {props.location.city} </span>
       </p>
       <button
         style={{
