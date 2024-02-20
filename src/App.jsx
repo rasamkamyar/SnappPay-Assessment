@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Contact from "/src/component/Contact";
 import Header from "./component/Header";
+import UserCard from "./component/UserCard";
 import style from "./App.module.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -33,7 +34,9 @@ function App() {
   return (
     <BrowserRouter>
       <div className={style.mainContainer}>
-        <Header filterUser={filterUser} />
+        <Routes>
+          <Route path="" element={<Header filterUser={filterUser} />} />
+        </Routes>
         <div className={style.cardContainer}>
           {users.map((user) => (
             <Routes>
@@ -42,6 +45,9 @@ function App() {
           ))}
         </div>
       </div>
+      <Routes>
+        <Route path="/contact/user" element={<UserCard data={users} />} />
+      </Routes>
     </BrowserRouter>
   );
 }

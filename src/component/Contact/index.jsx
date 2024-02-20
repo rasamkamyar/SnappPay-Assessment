@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import style from "./index.module.css";
 
 function Contact(props) {
