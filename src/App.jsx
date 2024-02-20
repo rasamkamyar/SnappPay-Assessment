@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Contact from "/src/component/Contact";
+import Header from "./component/Header";
 import style from "./App.module.css";
 
 function App() {
@@ -14,8 +15,9 @@ function App() {
 
   console.log(users);
   return (
-    <>
-      <div className={style.container}>
+    <div className={style.mainContainer}>
+      <Header />
+      <div className={style.cardContainer}>
         {users.map((user) => (
           <Contact
             key={user.email}
@@ -26,7 +28,7 @@ function App() {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 
