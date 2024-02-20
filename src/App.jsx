@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Contact from "/src/component/Contact";
 import Header from "./component/Header";
 import style from "./App.module.css";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -36,7 +36,9 @@ function App() {
         <Header filterUser={filterUser} />
         <div className={style.cardContainer}>
           {users.map((user) => (
-            <Contact {...user} key={user.email} />
+            <Routes>
+              <Route path="" element={<Contact {...user} key={user.email} />} />
+            </Routes>
           ))}
         </div>
       </div>

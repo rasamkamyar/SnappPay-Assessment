@@ -1,7 +1,6 @@
 import style from "./index.module.css";
 
 function Contact(props) {
-  console.log(props);
   return (
     <div className={style.container}>
       <img
