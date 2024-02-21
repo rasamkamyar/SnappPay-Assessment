@@ -1,7 +1,23 @@
-import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import style from "./index.module.css";
+import { useContext } from "react";
+import ContactHistory from "../../context/ContactHistory";
 
 function Contact(props) {
+  const { setHistory, history } = useContext(ContactHistory);
+  function handleCardClick() {
+    setHistory((prev) => {
+      if (prev.length === 4) {
+        const temp = [...prev];
+        temp.shift();
+        temp.push(props);
+        return temp;
+      } else {
+        return [...prev, props];
+      }
+    });
+  }
+
   return (
     <div className={style.container}>
       <img
@@ -18,18 +34,22 @@ function Contact(props) {
       <p>
         <span>City : {props.location.city} </span>
       </p>
-      <button
-        style={{
-          padding: "10px 30px",
-          borderRadius: "10px",
-          fontWeight: "600",
-          cursor: "pointer",
-          backgroundColor: "rgb(53, 3, 53)",
-          color: "white",
-        }}
-      >
-        More Info
-      </button>
+      <div onClick={handleCardClick}>
+        <Link
+          to="/contact/user"
+          style={{
+            padding: "10px 30px",
+            borderRadius: "10px",
+            fontWeight: "600",
+            cursor: "pointer",
+            backgroundColor: "rgb(53, 3, 53)",
+            color: "white",
+            textDecorationLine: "none",
+          }}
+        >
+          More Info
+        </Link>
+      </div>
     </div>
   );
 }
